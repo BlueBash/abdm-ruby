@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   end
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.files       = Dir['lib/**/*.rb']
+  spec.files       = Dir['lib/**/*.rb', 'lib/generators/**/*']
   spec.require_paths = ["lib"]
 
   # Register a new dependency of your gem
