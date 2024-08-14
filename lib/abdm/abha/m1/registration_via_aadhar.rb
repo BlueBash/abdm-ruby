@@ -2,7 +2,6 @@ module Abdm
   module Abha
     module M1
       class RegistrationViaAadhar < Abdm::Base
-        ABHA_BASE_URL = "".freeze
 
         # Generate Aadhaar OTP on Aadhaar linked mobile number
         # This method sends a request to the API to generate an OTP that will be sent to the mobile number linked with the provided Aadhaar number.

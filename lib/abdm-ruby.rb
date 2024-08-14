@@ -2,7 +2,7 @@
 
 require 'abdm/version'
 require 'abdm/base'
-require 'abdm/rsa_encryption_service'
+require 'abdm/rsa_encryption'
 
 module Abdm
 end
