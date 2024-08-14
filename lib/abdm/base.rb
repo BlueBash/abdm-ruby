@@ -1,29 +1,27 @@
-require 'net/http'
 require 'json'
 require 'time'
 
+require 'abdm/api_exception'
+require 'abdm/helpers/api_operations'
+require 'abdm/helpers/session_handler'
+
 module Abdm
-  class Base
-    ABHA_BASE_URL = 'https://abhasbx.abdm.gov.in/'.freeze
-    GATEWAY_URL = 'https://dev.abdm.gov.in/gateway/'.freeze
+  class Base < OpenStruct
+    attr_accessor :session_token, :token_expiry_time
+
+    extend HTTParty
+    include Abdm::Helpers::ApiOperations
+    include Abdm::Helpers::SessionHandler
 
     def initialize
-      @session_token = set_session_token
-      @token_expiry_time = Time.now + 5.minute
+      require 'abdm/helpers/urls'
+      super
     end
 
-    def authentication
-    end
-
-    private
-
-    def ensure_session_token
-    end
-
-    def get_session_token
-    end
-
-    def set_session_token
+    def validate_response(response)
+      unless response.code.between?(200, 208)
+        raise Abdm::APIException.new response
+      end
     end
   end
 end
