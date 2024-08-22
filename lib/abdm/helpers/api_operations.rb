@@ -4,7 +4,10 @@ module Abdm
       require 'httparty'
 
       def process_api_request(http_method, url, options = {})
-        HTTParty.send(http_method, url, merge_headers(options))
+        response = HTTParty.send(http_method, url, options)
+        @parsed_response = response.parsed_response
+
+        response
       end
 
       protected
@@ -13,13 +16,6 @@ module Abdm
         define_method(http_method) do |url, options = {}|
           process_api_request(http_method, url, options)
         end
-      end
-
-      private
-
-      def merge_headers(options)
-        options[:headers] = { 'Content-Type' => 'application/json' }
-        options
       end
     end
   end
