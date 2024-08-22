@@ -14,7 +14,9 @@ module Abdm
     private
 
     def error_message
-      response_body.dig('error', 'message')
+      response_body.dig('error', 'message').presence || response_body['message']
     end
   end
+
+  class ValidationError < StandardError; end
 end
