@@ -1,4 +1,4 @@
-module Abdm
+module ABDM
   module Helpers
     module ResponseHandler
 
@@ -16,7 +16,7 @@ module Abdm
 
       def validate_response(res)
         unless res.code.between?(200, 208)
-          raise Abdm::APIException.new res
+          raise ABDM::APIException.new res
         end
       end
     end

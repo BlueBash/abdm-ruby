@@ -1,6 +1,6 @@
 require 'rails/generators'
 
-module Abdm
+module ABDM
   module Generators
     class InitializerGenerator < Rails::Generators::Base
       desc "Creates an initializer for ABDM configuration"

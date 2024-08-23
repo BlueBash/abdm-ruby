@@ -2,10 +2,11 @@
 
 require 'abdm/version'
 require 'abdm/base'
+require 'abdm/client'
 require 'abdm/rsa_encryption'
 require 'abdm/exceptions'
 
 require 'abdm/abha'
 
-module Abdm
+module ABDM
 end

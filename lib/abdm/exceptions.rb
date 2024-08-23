@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Abdm
+module ABDM
   class APIException < StandardError
     attr_accessor :response_body, :response_code
 

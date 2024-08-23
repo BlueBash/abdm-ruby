@@ -4,7 +4,7 @@ require_relative "lib/abdm/version"
 
 Gem::Specification.new do |spec|
   spec.name = "abdm-ruby"
-  spec.version = Abdm::VERSION
+  spec.version = ABDM::VERSION
   spec.authors = "Bikash Choudhury"
   spec.email = "bikash.choudhury@bluebash.co"
 

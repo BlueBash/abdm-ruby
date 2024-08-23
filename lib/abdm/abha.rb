@@ -2,11 +2,11 @@ require 'abdm/concerns/m1/registration'
 require 'abdm/concerns/m1/login'
 require 'abdm/concerns/m1/retrieve'
 
-module Abdm
+module ABDM
   class Abha < Base
-    include Abdm::M1::Registration
-    include Abdm::M1::Login
-    include Abdm::M1::Retrieve
+    include ABDM::M1::Registration
+    include ABDM::M1::Login
+    include ABDM::M1::Retrieve
 
     def create_account(document_type, value)
       raise validation_err("document_type is not correct. you can use onlys this #{document_options}") unless document_options.include?(document_type)
@@ -79,7 +79,7 @@ module Abdm
     private
 
     def validation_err(message)
-      raise Abdm::ValidationError(message)
+      raise ABDM::ValidationError(message)
     end
 
     def document_options

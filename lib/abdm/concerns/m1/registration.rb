@@ -1,9 +1,9 @@
 require 'abdm/request_body/abha_creation'
 
-module Abdm::M1
+module ABDM::M1
   module Registration
-    include Abdm::RsaEncryption
-    include Abdm::RequestBody::AbhaCreation
+    include ABDM::RsaEncryption
+    include ABDM::RequestBody::AbhaCreation
 
     def by_aadhaar(number)
       number  = encrypt(number)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Abdm do
+RSpec.describe ABDM do
   it "has a version number" do
-    expect(Abdm::VERSION).not_to be nil
+    expect(ABDM::VERSION).not_to be nil
   end
 
   it "does something useful" do

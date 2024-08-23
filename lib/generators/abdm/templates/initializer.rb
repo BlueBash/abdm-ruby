@@ -4,7 +4,7 @@
 # By default, the environment is set to 'production'. You can change it to 'sandbox'.
 #
 # Example:
-# AbdmConfig = {
+# ABDMConfig = {
 #   environment: 'sandbox', # or 'production'
 #   client_id: 'your_client_id',
 #   client_secret: 'your_client_secret'

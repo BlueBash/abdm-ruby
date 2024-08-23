@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Abdm::M1
+module ABDM::M1
   module Retrieve
 
     %w[profile qr_code abha_card].each do |method_name|

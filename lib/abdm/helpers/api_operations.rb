@@ -1,4 +1,4 @@
-module Abdm
+module ABDM
   module Helpers
     module ApiOperations
       require 'httparty'

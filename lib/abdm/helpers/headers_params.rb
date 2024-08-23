@@ -1,6 +1,6 @@
 require 'securerandom'
 
-module Abdm
+module ABDM
   module Helpers
     module HeadersParams
 

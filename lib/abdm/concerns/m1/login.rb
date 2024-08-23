@@ -2,10 +2,10 @@
 
 require 'abdm/request_body/abha_login'
 
-module Abdm::M1
+module ABDM::M1
   module Login
-    include Abdm::RsaEncryption
-    include Abdm::RequestBody::AbhaLogin
+    include ABDM::RsaEncryption
+    include ABDM::RequestBody::AbhaLogin
 
     %w[aadhaar mobile abha_number].each do |method|
       define_method("login_via_#{method}") do |value|
