@@ -25,12 +25,12 @@ For detailed information on how to install, configure, and use the `ABDM-ruby` g
 
 - **Usage**
 
-  - **[ABHA (Ayushman Bharat Health Account) Number](#abha-ayushman-bharat-health-account-number)**
+  - [ABHA (Ayushman Bharat Health Account) Number](#abha-ayushman-bharat-health-account-number)
 
 
-  - **[HFR (Health Facility Registry)](#hfr-health-facility-registry)**
+  - [HFR (Health Facility Registry)](#hfr-health-facility-registry)
 
-  - **[HPR (Health Professional Registry)](#hpr-health-professional-registry)**
+  - [HPR (Health Professional Registry)](#hpr-health-professional-registry)
 
 
 ## Quick Start

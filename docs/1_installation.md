@@ -51,4 +51,4 @@ If this command outputs the path of `abdm-ruby` without errors, the gem is insta
 
 - **Common Errors**: If you encounter any installation errors, such as missing dependencies or incorrect Ruby versions, ensure your environment meets the prerequisites.
 
-#### After installation, the next step is to set up the configuration for `ABDM-ruby`. Please refer to the [**Configuration Guide**](docs/2_configuration.md) for detailed instructions.
+#### After installation, the next step is to set up the configuration for `ABDM-ruby`. Please refer to the [**Configuration Guide**](2_configuration.md) for detailed instructions.
