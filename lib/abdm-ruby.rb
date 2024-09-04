@@ -7,6 +7,8 @@ require 'abdm/rsa_encryption'
 require 'abdm/exceptions'
 
 require 'abdm/abha'
+require 'abdm/hpr'
+require 'abdm/hfr'
 
 module ABDM
 end
