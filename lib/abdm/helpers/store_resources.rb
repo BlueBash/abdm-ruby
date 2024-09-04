@@ -18,6 +18,18 @@ module ABDM
         @t_token = "Bearer " + parsed_response['token']
       end
 
+      def store_hpr_token
+        @hpr_token = "Bearer " + parsed_response['token']
+      end
+
+      def store_x_hprid_token
+        @x_hprid_token = parsed_response['token']
+      end
+
+      def store_tracking_id
+        @tracking_id = parsed_response['trackingId']
+      end
+
       private
 
       def parse_access_token
