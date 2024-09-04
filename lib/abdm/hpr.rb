@@ -75,7 +75,7 @@ module ABDM
     private
 
     def send_api_request(method_name, options = {}, store_identifiers: nil, base_url: HPR_BASE_URL)
-      url    = "#{base_url}/#{HPR_PATH_URLS[method_name]}"
+      url    = "#{base_url}/#{PATH_URLS["hpr_#{method_name}"]}"
       params = {
         body: public_send("params_for_#{method_name}", **options).compact.to_json,
         headers: headers_params
