@@ -15,6 +15,26 @@ end
 
 
 PATH_URLS = {
+  abha_generate_aadhaar_otp: 'abha/api/v3/enrollment/request/otp',
+  abha_resend_aadhaar_otp: 'abha/api/v3/enrollment/request/otp',
+  abha_enrol_abha: 'abha/api/v3/enrollment/enrol/byAadhaar',
+  abha_send_mobile_verification_otp: 'abha/api/v3/enrollment/request/otp',
+  abha_verify_mobile_otp: 'abha/api/v3/enrollment/auth/byAbdm',
+  abha_send_email_verification_link: 'abha/api/v3/profile/account/request/emailVerificationLink',
+  abha_get_address_suggestion: 'abha/api/v3/enrollment/enrol/suggestion',
+  abha_create_custom_address: 'abha/api/v3/enrollment/enrol/abha-address',
+  abha_generate_dl_otp: 'abha/api/v3/enrollment/request/otp',
+  abha_verify_dl_otp: 'abha/api/v3/enrollment/auth/byAbdm',
+  abha_verify_dl_document: 'abha/api/v3/enrollment/enrol/byDocument',
+  abha_login_via_aadhaar_otp: 'abha/api/v3/profile/login/request/otp',
+  abha_verify_aadhaar_otp: 'abha/api/v3/profile/login/verify',
+  abha_login_via_mobile_otp: 'abha/api/v3/profile/login/request/otp',
+  abha_verify_mobile_login_otp: 'abha/api/v3/profile/login/verify',
+  abha_delete_abha_number_otp: 'abha/api/v3/profile/account/request/otp',
+  abha_verify_delete_abha_otp: 'abha/api/v3/profile/account/verify',
+  abha_reactivate_abha_otp: 'abha/api/v3/profile/account/request/otp',
+  abha_verify_reactivate_abha_otp: 'abha/api/v3/profile/login/verify',
+
   hpr_generate_aadhaar_otp: 'api/v1/registration/aadhaar/generateOtp',
   hpr_verify_aadhaar_otp: 'api/v1/registration/aadhaar/verifyOTP',
   hpr_check_hpi_existence: 'api/v2/registration/aadhaar/checkHpIdAccountExist',

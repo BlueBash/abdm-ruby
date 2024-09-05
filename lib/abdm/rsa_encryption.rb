@@ -11,7 +11,7 @@ module ABDM
     def encrypt(data, api_version = :v1_v2_v3)
       public_key     = load_public_key(PUBLIC_KEYS[api_version])
 
-      encrypted_data = public_key.public_encrypt(data.b, OpenSSL::PKey::RSA::PKCS1_OAEP_PADDING)
+      encrypted_data = public_key.public_encrypt(data.to_s, OpenSSL::PKey::RSA::PKCS1_OAEP_PADDING)
       Base64.strict_encode64(encrypted_data)
     end
 
