@@ -29,7 +29,7 @@ module ABDM
             clientSecret: ABDMConfig[:client_secret],
             grantType: 'client_credentials'
           }.to_json,
-          headers: content_and_accept_type
+          headers: default_headers
         }
       end
     end

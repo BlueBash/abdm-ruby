@@ -4,23 +4,36 @@ module ABDM
   module Helpers
     module HeadersParams
 
-      def headers_params(request_id: false, time_stamp: false, txn_id: false, abdm_x_token: false, abdm_t_token: false, abdm_x_hprid_token: false)
-        params = content_and_accept_type
+      def headers_params(klass)
+        headers = default_headers
 
-        params['Authorization']  = authentication_token
-        params['TIMESTAMP']      = iso_timestamp  if time_stamp
-        params['REQUEST-ID']     = randomUUID     if request_id
-        params['Transaction_id'] = transaction_id if txn_id
-        params['X-token']        = x_token        if abdm_x_token
-        params['T-token']        = t_token        if abdm_t_token
-        params['x-hprid-auth']   = x_hprid_token  if abdm_x_hprid_token
+        headers['Authorization'] = authentication_token
 
-        params
+        case klass
+        when 'ABHA'
+          headers.merge!(abha_specific_headers)
+        when 'HPR'
+        when 'HFR'
+          headers['x-hprid-auth'] = x_hprid_token
+        end
+
+        headers
       end
 
       private
 
-      def content_and_accept_type
+      def abha_specific_headers
+        {
+          'TIMESTAMP'      => iso_timestamp,
+          'REQUEST-ID'     => generate_request_id,
+          'Transaction_id' => transaction_id,
+          'txnId'          => transaction_id,
+          'X-token'        => x_token,
+          'T-token'        => t_token
+        }
+      end
+
+      def default_headers
         {
           'Content-Type' => 'application/json',
           'Accept' => 'application/json'
@@ -31,11 +44,9 @@ module ABDM
         Time.now.utc.iso8601(3)
       end
 
-      def randomUUID
+      def generate_request_id
         SecureRandom.uuid
       end
     end
   end
 end
-
-
