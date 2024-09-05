@@ -63,11 +63,11 @@ module ABDM
         }
       end
 
-      def params_for_create_custom_abha_address(abha_address:)
+      def params_for_create_custom_abha_address(abha_address:, preferred: 1)
         {
           txnId: transaction_id,
           abhaAddress: abha_address,
-          preferred:  1
+          preferred: preferred
         }
       end
 

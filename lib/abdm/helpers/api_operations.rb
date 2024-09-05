@@ -5,7 +5,9 @@ module ABDM
 
       def process_api_request(http_method, url, options = {})
         response = HTTParty.send(http_method, url, options)
+
         @parsed_response = response.parsed_response
+        @response_code   = response.code
 
         response
       end

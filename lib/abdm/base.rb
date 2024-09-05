@@ -10,7 +10,7 @@ require 'abdm/common_base'
 
 module ABDM
   class Base < OpenStruct
-    attr_accessor :session_token, :token_expiry_time, :transaction_id, :parsed_response, :x_token, :t_token, :hpr_token, :x_hprid_token, :tracking_id
+    attr_accessor :session_token, :token_expiry_time, :transaction_id, :response_code, :parsed_response, :x_token, :t_token, :hpr_token, :x_hprid_token, :tracking_id
 
     extend HTTParty
     include ABDM::Helpers::HeadersParams
