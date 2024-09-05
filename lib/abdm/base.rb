@@ -6,6 +6,7 @@ require 'abdm/helpers/api_operations'
 require 'abdm/helpers/session_handler'
 require 'abdm/helpers/response_handler'
 require 'abdm/helpers/store_resources'
+require 'abdm/common_base'
 
 module ABDM
   class Base < OpenStruct
@@ -17,6 +18,7 @@ module ABDM
     include ABDM::Helpers::SessionHandler
     include ABDM::Helpers::ResponseHandler
     include ABDM::Helpers::StoreResources
+    include ABDM::CommonBase
 
     def initialize
       require 'abdm/helpers/urls'

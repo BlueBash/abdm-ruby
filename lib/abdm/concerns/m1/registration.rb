@@ -2,91 +2,50 @@ require 'abdm/request_body/abha_creation'
 
 module ABDM::M1
   module Registration
-    include ABDM::RsaEncryption
     include ABDM::RequestBody::AbhaCreation
 
-    def by_aadhaar(number)
-      number  = encrypt(number)
-      options = {
-        body: params_for_abha_create_by_aadhaar(number),
-        headers: headers_params(request_id: true, time_stamp: true)
-      }
-
-      uri = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/request/otp"
-      res = post(uri, options)
-
-      render_response(res, store_identifiers: 'transaction_id')
+    def generate_aadhaar_otp(params)
+      send_request(__method__, params:, store_identifiers: 'transaction_id')
     end
 
-    def verify_aadhaar_otp(otp_value, mobile_number)
-      otp_value = encrypt(otp_value)
-      options   = {
-        body: params_for_verify_otp_by_aadhaar(otp_value, mobile_number),
-        headers: headers_params(request_id: true, time_stamp: true)
-      }
-
-      uri = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/enrol/byAadhaar"
-      res  = post(uri, options)
-
-      render_response(res, store_identifiers: 'session_token')
+    def resend_aadhaar_otp(params)
+      generate_aadhaar_otp(params)
     end
 
-    def by_driving_license(params)
+    def enrol_abha(params)
+      send_request(__method__, params:, store_identifiers: 'session_token')
     end
 
-    def verify_driving_license_otp(params)
+    def send_mobile_otp(params)
+      send_request(__method__, params:)
     end
 
-    def verify_driving_license_document(params)
+    def verify_mobile_otp(params)
+      send_request(__method__, params:)
     end
 
-    def update_mobile_or_email(login_hint, value)
-      value   = encrypt(value)
-      options = {
-        body: params_for_update_mobile_email(login_hint, value),
-        headers: headers_params(request_id: true, time_stamp: true)
-      }
-
-      uri = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/request/otp"
-      res = post(uri, options)
-
-      render_response(res)
+    def send_email_verification_link(params)
+      send_request(__method__, params:)
     end
 
-    def verify_otp_update_mobile_or_email(login_hint, otp_value)
-      otp_value = encrypt(otp_value)
-      options   = {
-        body: params_for_verify_otp_mobile_email(login_hint, otp_value),
-        headers: headers_params(request_id: true, time_stamp: true)
-      }
-
-      uri  = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/auth/byAbdm"
-      res  = post(uri, options)
-
-      render_response(res)
+    def get_abha_address_suggestion
+      send_request(__method__)
     end
 
-    def generate_address
-      options = {
-        headers: headers_params(request_id: true, time_stamp: true, txn_id: true)
-      }
-
-      uri = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/enrol/suggestion"
-      res = get(uri, options)
-
-      render_response(res)
+    def create_custom_abha_address(params)
+      send_request(__method__, params:)
     end
 
-    def create_address(address)
-      options = {
-        body: params_for_abha_create_abha_address(address),
-        headers: headers_params(request_id: true, time_stamp: true)
-      }
+    def generate_dl_otp(params)
+      send_request(__method__, params:, store_identifiers: 'transaction_id')
+    end
 
-      uri = "#{ABHA_BASE_URL}/abha/api/v3/enrollment/enrol/abha-address"
-      res = post(uri, options)
+    def verify_dl_otp(params)
+      send_request(__method__, params:)
+    end
 
-      render_response(res)
+    def verify_dl_document(params)
+      send_request(__method__, params:)
     end
   end
 end
