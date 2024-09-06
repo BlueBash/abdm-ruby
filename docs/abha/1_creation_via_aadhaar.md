@@ -28,11 +28,6 @@ Start by creating an instance of the `ABDM::Abha` class:
 
 The first step is to generate an OTP for Aadhaar verification.
 
-#### Method:
-```ruby
-generate_aadhaar_otp(aadhaar_number:)
-```
-
 #### Parameters:
 - `aadhaar_number`: String - The Aadhaar number for which the OTP will be generated.
 
@@ -57,11 +52,6 @@ generate_aadhaar_otp(aadhaar_number:)
 
 If the OTP was not received or has expired, you can resend the OTP using the same method as in Step 1.
 
-#### Method:
-```ruby
-resend_aadhaar_otp(aadhaar_number:)
-```
-
 #### Parameters:
 - `aadhaar_number`: String - The Aadhaar number for which the OTP will be regenerated.
 
@@ -83,11 +73,6 @@ resend_aadhaar_otp(aadhaar_number:)
 ## 3. Enrol ABHA
 
 After successfully verifying the Aadhaar OTP, the next step is to enrol and create the ABHA ID from the previous steps.
-
-#### Method:
-```ruby
-enrol_abha(otp_value:, mobile_number:)
-```
 
 #### Parameters:
 - `otp_value`: String *(required)* - The OTP value received on your Aadhaar-registered mobile number.
@@ -209,11 +194,6 @@ This API call retrieves suggestions for ABHA addresses based on the current tran
 ## 8. Create Custom ABHA Address
 
 This API call is used to create a custom ABHA address for the user. You need to provide the desired custom ABHA address.
-
-#### Method:
-```ruby
-create_custom_abha_address(abha_address:, preferred:)
-```
 
 #### Parameters:
 - `abha_address`: String (required) - The custom ABHA address that the user wants to create.
