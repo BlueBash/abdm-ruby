@@ -19,19 +19,70 @@ module ABDM
         }
       end
 
+
       # Method to generate parameters for Onboard Facility API
-      def params_for_basic_facility_information(facility_name:, ownership_code:, ownership_subtype_code:, facility_address_details:, facility_contact_information:, system_of_medicine_code:, facility_type_code:, facility_sub_type:, speciality_type_code: nil, type_of_service_code:, facility_operational_status:, facility_uploads:, timing_of_facilities: [], facility_address_proof: [], abdm_compliant_software: [])
+      def params_for_basic_facility_information(
+        facility_name:,
+        ownership_code:,
+        ownership_subtype_code:,
+        ownership_subtype_code_2: nil,
+        country: 'India',
+        state_LGD_code:,
+        district_LGD_code:,
+        subdistrict_LGD_code:,
+        facility_region: nil,
+        village_city_town_lgd_code: nil,
+        address_line_1:,
+        address_line_2: nil,
+        pincode:,
+        latitude:,
+        longitude:,
+        facility_contact_number: nil,
+        facility_email_id: nil,
+        facility_landline_number: nil,
+        facility_std_code: nil,
+        website_link: nil,
+        system_of_medicine_code:,
+        facility_type_code:,
+        facility_subtype: nil,
+        speciality_type_code:,
+        type_of_service_code: nil,
+        facility_operational_status:,
+        facility_uploads: {},
+        timings_of_facility: [],
+        facility_address_proof: [],
+        abdm_compliant_software: []
+      )
         {
           facilityId: '',
           facilityInformation: {
             facilityName: facility_name,
             ownershipCode: ownership_code,
             ownershipSubTypeCode: ownership_subtype_code,
-            facilityAddressDetails: facility_address_details,
-            facilityContactInformation: facility_contact_information,
+            ownershipSubTypeCode2: ownership_subtype_code_2,
+            facilityAddressDetails: {
+              country: country,
+              stateLGDCode: state_LGD_code,
+              districtLGDCode: district_LGD_code,
+              subdistrictLGDCode: subdistrict_LGD_code,
+              facilityRegion: facility_region,
+              villageCityTownLGDCode: village_city_town_lgd_code,
+              addressLine1: address_line_1,
+              addressLine2: address_line_2,
+              pincode: pincode,
+              latitude: latitude,
+              longitude: longitude
+            },
+            facilityContactInformation: {
+              facilityContactNumber: facility_contact_number,
+              facilityEmailId: facility_email_id,
+              facilityLandlineNumber: facility_landline_number,
+              facilityStdCode: facility_std_code,
+              websiteLink: website_link
+            },
             systemOfMedicineCode: system_of_medicine_code,
             facilityTypeCode: facility_type_code,
-            facilitySubType: facility_sub_type,
+            facilitySubType: facility_subtype,
             specialityTypeCode: speciality_type_code,
             typeOfServiceCode: type_of_service_code,
             facilityOperationalStatus: facility_operational_status,
@@ -44,7 +95,24 @@ module ABDM
       end
 
       # Method to generate parameters for the Additional Information API
-      def params_for_additional_information(tracking_id: @tracking_id, has_dialysis_center: nil, has_pharmacy: nil, has_blood_bank: nil, has_cath_lab: nil, has_diagnostic_lab: nil, has_imaging_center: nil, services_by_imaging_center: [{ service: "", count: 0 }], nhrr_id: nil, nin: nil, abpmjay_id: nil, rohini_id: nil, echs_id: nil, cghs_id: nil, cea_registration: nil, state_insurance_scheme_id: nil)
+      def params_for_additional_information(
+        tracking_id: @tracking_id,
+        has_dialysis_center: nil,
+        has_pharmacy: nil,
+        has_blood_bank: nil,
+        has_cath_lab: nil,
+        has_diagnostic_lab: nil,
+        has_imaging_center: nil,
+        services_by_imaging_center: [{ service: "", count: 0 }],
+        nhrr_id: nil,
+        nin: nil,
+        abpmjay_id: nil,
+        rohini_id: nil,
+        echs_id: nil,
+        cghs_id: nil,
+        cea_registration: nil,
+        state_insurance_scheme_id: nil
+      )
         {
           trackingId: tracking_id,
           generalInformation: {
@@ -138,11 +206,12 @@ module ABDM
         }
       end
 
-      def params_for_submit_facility(tracking_id: @tracking_id, source_of_information: nil, source_unique_id: nil)
+      def params_for_submit_facility(tracking_id: @tracking_id, source_of_information: nil, source_unique_id: nil, facility_super_user: nil)
         {
           trackingId: tracking_id,
           sourceOfInformation: source_of_information,
-          sourceUniqueID: source_unique_id
+          sourceUniqueID: source_unique_id,
+          facilitySuperUser: facility_super_user
         }
       end
     end

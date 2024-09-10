@@ -134,12 +134,12 @@ module ABDM
       # @param registration_academic [Hash] Registration academic details
       # @param current_work_details [Hash] Current work details
       def params_for_register_professional(
-        health_professional_type:, official_mobile:, official_mobile_code: nil, official_mobile_status: nil, official_email: nil, official_email_status: nil, visible_profile_picture: nil, profile_visible_to_public: nil, personal_information:, communication_address:, contact_information:, registration_academic:, current_work_details:
+        profile_photo: nil, health_professional_type:, official_mobile:, official_mobile_code: nil, official_mobile_status: nil, official_email: nil, official_email_status: nil, visible_profile_picture: nil, profile_visible_to_public: nil, personal_information: {}, address_as_per_kyc: nil, communication_address:, contact_information:, registration_academic:, current_work_details:
       )
         {
           hprToken: hpr_token,
           practitioner: {
-            profilePhoto: "",
+            profilePhoto: profile_photo,
             healthProfessionalType: health_professional_type,
             officialMobileCode: official_mobile_code,
             officialMobile: official_mobile,
@@ -149,7 +149,7 @@ module ABDM
             visibleProfilePicture: visible_profile_picture,
             profileVisibleToPublic: profile_visible_to_public,
             personalInformation: personal_information,
-            addressAsPerKYC: "",
+            addressAsPerKYC: address_as_per_kyc,
             communicationAddress: communication_address,
             contactInformation: contact_information,
             registrationAcademic: registration_academic,
@@ -159,7 +159,7 @@ module ABDM
       end
 
       # Method to generate parameters for fetching the professional document list
-      def params_for_fetch_document_list
+      def params_for_fetch_document_list(hpr_id: @hpr_id)
         { hprid: hpr_id }
       end
 

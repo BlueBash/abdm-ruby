@@ -40,8 +40,11 @@ module ABDM
       end
 
       # Method to generate parameters for fetching Countries
-      def params_for_countries(country_name: nil)
-        { name: country_name }
+      def params_for_countries(country_name: nil, identifier: nil)
+        {
+          name: country_name,
+          identifier: identifier
+        }
       end
 
       # Method to generate parameters for fetching States
