@@ -6,75 +6,66 @@ module Abdm
       include ABDM::RequestBody::HprMasterApiParams
 
       # Instance method to fetch System of Medicine
-      def fetch_system_of_medicine
-        send_master_api_request(__method__)
+      def fetch_system_of_medicine(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Medical Councils
-      def fetch_medical_councils
-        send_master_api_request(__method__)
+      def fetch_medical_councils(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Languages
-      def fetch_languages
-        send_master_api_request(__method__)
+      def fetch_languages(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Universities
-      def fetch_universities
-        send_master_api_request(__method__)
-      end
-
-      # Instance method to fetch Courses
-      def fetch_courses
-        send_master_api_request(__method__)
+      def fetch_universities(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Colleges
-      def fetch_colleges
-        send_master_api_request(__method__)
+      def fetch_colleges(params = {})
+        send_request(__method__, params:)
+      end
+
+      # Instance method to fetch Courses
+      def fetch_courses(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Country Data
-      def fetch_countries
-        send_master_api_request(__method__)
+      def fetch_countries(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch States
-      def fetch_states
-        send_master_api_request(__method__)
+      def fetch_states(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Districts
-      def fetch_districts
-        send_master_api_request(__method__)
+      def fetch_districts(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Sub Districts
-      def fetch_sub_districts
-        send_master_api_request(__method__)
+      def fetch_sub_districts(params = {})
+        send_request(__method__, params:)
       end
 
       # Instance method to fetch Nurse Affiliated Boards
-      def fetch_nurse_affiliated_boards
-        send_master_api_request(__method__)
+      def fetch_nurse_affiliated_boards(params = {})
+        send_request(__method__, params:)
       end
 
       private
 
-      def send_master_api_request(method_name)
-        method_name = method_name.to_s.remove('fetch_')
-        url         = "#{DOCTOR_BASE_URL}/#{MASTERAPI_PATH["hpr_#{method_name}"]}"
-        params      = { body: request_body_params, headers: headers_params }
-        res         = post(url, params)
+      def send_request(method_name, params: {})
+        klass = ABDMConfig[:environment] == 'sandbox' ? 'DOCTOR' : 'HPR'
 
-        render_response(res)
-      end
-
-      def request_body_params
-        params = public_send("params_for_#{method_name}")
-
-        params.is_a?(Hash) ? params.compact.to_json : params
+        send_master_api_request(klass, method_name, params:)
       end
     end
   end
