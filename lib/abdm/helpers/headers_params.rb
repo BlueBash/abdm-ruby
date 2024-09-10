@@ -12,7 +12,7 @@ module ABDM
         case klass
         when 'ABHA'
           headers.merge!(abha_specific_headers)
-        when 'HPR'
+        when 'HPR' || 'DOCTER'
         when 'HFR'
           headers['x-hprid-auth'] = x_hprid_token
         end
