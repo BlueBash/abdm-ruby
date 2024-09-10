@@ -18,19 +18,63 @@ As a leader in the development of Electronic Health Record (EHR) systems, **Blue
 
 ## Documentation
 
-For detailed information on how to install, configure, and use the `ABDM-ruby` gem, please refer to the documentation in the `docs` directory:
+For detailed information on how to install, configure, and use the `ABDM-ruby` gem, please refer to the documentation in the `docs` directory. Below is a breakdown of the available documentation:
 
-- [Installation Guide](docs/1_installation.md)
-- [Configuration Guide](docs/2_configuration.md)
+### 1. **Installation and Configuration**
+- [Installation Guide](/docs/1_installation.md)
+- [Configuration Guide](/docs/2_configuration.md)
+- [Response and Exception Handling](/docs/3_response_and_exception_handling.md)
+- [Contributing Guidelines](/docs/4_contributing.md)
 
-- **Usage**
+### 2. **ABHA (Ayushman Bharat Health Account)**
+- [Creation via Aadhaar](/docs/abha/1_creation_via_aadhaar.md)
+- [Creation via Driving License](/docs/abha/2_creation_via_driving_license.md)
 
-  - [ABHA (Ayushman Bharat Health Account) Number](#abha-ayushman-bharat-health-account-number)
+### 3. **HFR (Health Facility Registry)**
+- **Onboarding Process**:
+  - [Basic Facility Information](/docs/hfr/on-boarding-hfr/1_basic_facility_info.md)
+  - [Additional Information](/docs/hfr/on-boarding-hfr/2_additional_info.md)
+  - [Detailed Information](/docs/hfr/on-boarding-hfr/3_detailed_info.md)
+  - [Submit Facility Details](/docs/hfr/on-boarding-hfr/4_submit_facility_details.md)
 
+### 4. **HPR (Health Professional Registry)**
+- **Registration Process**:
+  - [Generate Aadhaar OTP](/docs/hpr/registration/1_generate_aadhaar_otp.md)
+  - [Verify Aadhaar OTP](/docs/hpr/registration/2_verify_aadhaar_otp.md)
+  - [Check HPI ID Existence](/docs/hpr/registration/3_check_hpi_id_existence.md)
+  - [Verify Mobile Number Matches Aadhaar](/docs/hpr/registration/4_verify_mobile_number_matches_aadhaar.md)
+  - [Generate Mobile OTP](/docs/hpr/registration/5_1_generate_mobile_otp.md)
+  - [Verify Mobile OTP](/docs/hpr/registration/5_2_verify_mobile_otp.md)
+  - [Suggest Username](/docs/hpr/registration/6_suggest_username.md)
+  - [Create HPRID](/docs/hpr/registration/7_create_hprid.md)
+  - [Search Facility](/docs/hpr/registration/8_search_facility.md)
+  - [Register Professional](/docs/hpr/registration/9_register_professional.md)
+  - [Retrieve Document List](/docs/hpr/registration/10_retrieve_document_list.md)
+  - [Upload Documents](/docs/hpr/registration/11_upload_documents.md)
 
-  - [HFR (Health Facility Registry)](#hfr-health-facility-registry)
+### 5. **Master/Utility APIs**
+- **HFR Master Data**:
+  - [Master Types](/docs/master_or_utility_apis/hfr/1_master_types.md)
+  - [Master Data](/docs/master_or_utility_apis/hfr/2_master_data.md)
+  - [LGD States](/docs/master_or_utility_apis/hfr/3_lgd_states.md)
+  - [Facility Types](/docs/master_or_utility_apis/hfr/4_facility_types.md)
+  - [Owner Subtypes](/docs/master_or_utility_apis/hfr/5_owner_subtypes.md)
+  - [Specialities](/docs/master_or_utility_apis/hfr/6_specialities.md)
+  - [Facility Subtypes](/docs/master_or_utility_apis/hfr/7_facility_subtypes.md)
+  - [ABDM Complaint Software](/docs/master_or_utility_apis/hfr/8_abdm_complaint_software.md)
 
-  - [HPR (Health Professional Registry)](#hpr-health-professional-registry)
+- **HPR Master Data**:
+  - [System of Medicine](/docs/master_or_utility_apis/hpr/1_system_of_medicine.md)
+  - [Medical Councils](/docs/master_or_utility_apis/hpr/2_medical_council.md)
+  - [Languages](/docs/master_or_utility_apis/hpr/3_languages.md)
+  - [Universities](/docs/master_or_utility_apis/hpr/4_universities.md)
+  - [Colleges](/docs/master_or_utility_apis/hpr/5_colleges.md)
+  - [Courses](/docs/master_or_utility_apis/hpr/6_courses.md)
+  - [Countries](/docs/master_or_utility_apis/hpr/7_countries.md)
+  - [States](/docs/master_or_utility_apis/hpr/8_states.md)
+  - [Districts](/docs/master_or_utility_apis/hpr/9_districts.md)
+  - [Sub-districts](/docs/master_or_utility_apis/hpr/10_sub_districts.md)
+  - [Nurse Affiliated Boards](/docs/master_or_utility_apis/hpr/11_nurse_affiliated_boards.md)
 
 
 ## Quick Start
