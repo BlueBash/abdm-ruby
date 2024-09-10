@@ -2,6 +2,8 @@
 
 This guide explains how to create an Ayushman Bharat Health Account (ABHA) using Aadhaar through the `ABDM-ruby` gem.
 
+
+
 ## Pre-requisites
 
 Before you begin the ABHA creation process, ensure that:
@@ -10,33 +12,42 @@ Before you begin the ABHA creation process, ensure that:
 2. You have a valid Aadhaar number and a mobile number linked to your Aadhaar.
 3. You are familiar with how the gem handles [Responses and Exceptions](docs/3_response_and_exception_handling.md), to effectively manage API responses and errors.
 
+
+
 ## ABHA Creation Steps
 
 Creating an ABHA via Aadhaar requires a series of API calls. The `@client` object manages the flow by storing essential response values like `txnId`, `session_token`, and others, which are reused in subsequent API calls.
+
 
 ### Initialize the Client
 
 Start by creating an instance of the `ABDM::Abha` class:
 
+#### Method
 ```ruby
 @client = ABDM::Abha.new
 ```
 
 
 
-## 1. Generate Aadhaar OTP
+### 1. Generate Aadhaar OTP
 
 The first step is to generate an OTP for Aadhaar verification.
 
-#### Parameters:
+#### Parameters
 - `aadhaar_number`: String - The Aadhaar number for which the OTP will be generated.
 
-#### Example:
+#### Method
+```ruby
+generate_aadhaar_otp(aadhaar_number: )
+```
+
+#### Request Body
 ```ruby
 @client.generate_aadhaar_otp(aadhaar_number: '123456789012')
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -48,19 +59,25 @@ The first step is to generate an OTP for Aadhaar verification.
 
 
 
-## 2. Resend Aadhaar OTP
+
+### 2. Resend Aadhaar OTP
 
 If the OTP was not received or has expired, you can resend the OTP using the same method as in Step 1.
 
-#### Parameters:
+#### Parameters
 - `aadhaar_number`: String - The Aadhaar number for which the OTP will be regenerated.
 
-#### Example:
+#### Method
+```ruby
+resend_aadhaar_otp(aadhaar_number: )
+```
+
+#### Request Body
 ```ruby
 @client.resend_aadhaar_otp(aadhaar_number: '123456789012')
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -70,21 +87,28 @@ If the OTP was not received or has expired, you can resend the OTP using the sam
 
 
 
-## 3. Enrol ABHA
+### 3. Enrol ABHA
 
 After successfully verifying the Aadhaar OTP, the next step is to enrol and create the ABHA ID from the previous steps.
 
-#### Parameters:
+#### Parameters
 - `otp_value`: String *(required)* - The OTP value received on your Aadhaar-registered mobile number.
 - `mobile_number`: String *(required)* - The primary mobile number to be used for ABHA enrolment, which may be different from the Aadhaar-linked mobile number.
 
-#### Example:
+#### Method
+```ruby
+enrol_abha(
+  otp_value:,
+  mobile_number:
+)
+```
+
+#### Request Body
 ```ruby
 @client.enrol_abha(otp_value: '123456', mobile_number: '9876543210')
 ```
 
-
-#### Example Response:
+#### Response Body
 ```json
 {
   "message": "Account created successfully",
@@ -94,7 +118,7 @@ After successfully verifying the Aadhaar OTP, the next step is to enrol and crea
 
 
 
-## 4. ABHA Mobile Verification
+### 4. ABHA Mobile Verification
 
 After enrolling an ABHA, you need to verify the mobile number provided during enrolment. If the mobile number is different from the Aadhaar-linked mobile number, you must send an OTP for verification.
 
@@ -102,15 +126,20 @@ After enrolling an ABHA, you need to verify the mobile number provided during en
 - If the primary mobile number matches the Aadhaar-linked mobile number, it is saved in the database.
 - If the primary mobile number is different from the Aadhaar-linked mobile number, it is not saved, and its value is set to `null`.
 
-#### Parameters:
+#### Parameters
 - `mobile_number`: String (required) - The mobile number that was provided during the ABHA enrolment. This is used to send a verification OTP.
 
-#### Example:
+#### Method
+```ruby
+send_mobile_otp(mobile_number: )
+```
+
+#### Request Body
 ```ruby
 @client.send_mobile_otp(mobile_number: '9876543210')
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -120,19 +149,24 @@ After enrolling an ABHA, you need to verify the mobile number provided during en
 
 
 
-## 5. Verify Mobile OTP
+### 5. Verify Mobile OTP
 
 After receiving the OTP on the mobile number, you need to verify it to complete the mobile number verification process.
 
-#### Parameters:
+#### Parameters
 - `otp_value`: String (required) - The OTP received on the mobile number.
 
-#### Example:
+#### Method
+```ruby
+verify_mobile_otp(otp_value: )
+```
+
+#### Request Body
 ```ruby
 @client.verify_mobile_otp(otp_value: '123456')
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -143,19 +177,24 @@ After receiving the OTP on the mobile number, you need to verify it to complete 
 
 
 
-## 6. Send Email Verification Link
+### 6. Send Email Verification Link
 
 After completing the ABHA enrolment and mobile verification, you need to verify the email address.
 
-#### Parameters:
+#### Parameters
 - `email_id`: String (required) - The email address for which the verification link will be sent. This should be RSA encrypted.
 
-#### Example:
+#### Method
+```ruby
+send_email_verification_link(email_id:)
+```
+
+#### Request Body
 ```ruby
 @client.send_email_verification_link(email_id: 'example@example.com')
 ```
 
-#### Example Response:
+#### Response Body
 No response body is provided. check with this
 ```ruby
 @client.response_code
@@ -163,19 +202,24 @@ No response body is provided. check with this
 
 
 
-## 7. Get ABHA Address Suggestion
+### 7. Get ABHA Address Suggestion
 
 This API call retrieves suggestions for ABHA addresses based on the current transaction. It helps users find available ABHA addresses.
 
-#### Parameters:
+#### Parameters
 - No parameters are required for this method.
 
-#### Example:
+#### Method
+```ruby
+get_abha_address_suggestion()
+```
+
+#### Request Body
 ```ruby
 @client.get_abha_address_suggestion
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -191,15 +235,23 @@ This API call retrieves suggestions for ABHA addresses based on the current tran
 
 
 
-## 8. Create Custom ABHA Address
+### 8. Create Custom ABHA Address
 
 This API call is used to create a custom ABHA address for the user. You need to provide the desired custom ABHA address.
 
-#### Parameters:
+#### Parameters
 - `abha_address`: String (required) - The custom ABHA address that the user wants to create.
 - `preferred`: Integer (optional) - Indicates if the custom ABHA address should be set as the preferred address. Accepted value is `1`.
 
-#### Example:
+#### Method
+```ruby
+create_custom_abha_address(
+  abha_address:,
+  preferred:
+)
+```
+
+#### Request Body
 ```ruby
 @client.create_custom_abha_address(
   abha_address: 'bikash22',
@@ -207,7 +259,7 @@ This API call is used to create a custom ABHA address for the user. You need to 
 )
 ```
 
-#### Example Response:
+#### Response Body
 ```json
 {
   "txnId": "bace3e1e-b09e-4506-b80d-d98fd16f1acb",
@@ -215,6 +267,7 @@ This API call is used to create a custom ABHA address for the user. You need to 
   "preferredAbhaAddress": "bikash22"
 }
 ```
+
 
 
 ## Conclusion
